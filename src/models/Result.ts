@@ -13,6 +13,7 @@ export interface IResult {
     startedAt: number;
     endedAt: number;
     title: string;
+    resultPoints: number;
     candidateId: string;
 };
 
@@ -24,6 +25,7 @@ const ResultSchema: Schema = new Schema(
         startedAt: { type: Number, required: true },
         endedAt: { type: Number, required: true },
         title: { type: String, required: true },
+        resultPoints: { type: Number, required: true },
         candidateId: { type: Schema.Types.ObjectId, required: true, ref: 'Candidate' },
     },
     {

@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import Result from "../models/Result";
 
 const createResult = ( req: Request, res: Response, next: NextFunction ) => {
-  const {answerArray, startedAt, endedAt, title, candidateId } = req.body;
+  const {answerArray, startedAt, endedAt, title, resultPoints, candidateId } = req.body;
 
   const result = new Result({
     _id: new mongoose.Types.ObjectId(),
@@ -11,6 +11,7 @@ const createResult = ( req: Request, res: Response, next: NextFunction ) => {
     startedAt, 
     endedAt, 
     title,
+    resultPoints,
     candidateId,
   });
 
