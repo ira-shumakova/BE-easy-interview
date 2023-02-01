@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import Logging from './library/Logging';
 import { config } from './config/config';
 import questionRoutes from './routes/Question';
+import candidateRoutes from './routes/Candidate';
 
 const router = express();
 
@@ -43,6 +44,7 @@ const StartServer = () => {
     });
 
   router.use('/questions', questionRoutes);
+  router.use('/candidates', candidateRoutes);
 
   /** Error handling */
   router.use((req, res, next) => {
