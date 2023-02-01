@@ -22,14 +22,15 @@ const readQuestion = ( req: Request, res: Response, next: NextFunction ) => {
   const questionId = req.params.questionId;
 
   return Question.findById(questionId)
-    .then((question) => (question ? res.status(200).json({ question }) : res.status(404).json({ message: 'Not found'})))
+    .then((question) => (question ? res.status(200).json({ question }) : res.status(404)
+    .json({ message: 'Not found'})))
     .catch((error) => res.status(500).json({ error }));
 };
 
 const readAllQuestions = ( req: Request, res: Response, next: NextFunction ) => {
   return Question.find()
-  .then((questions) => res.status(200).json({ questions }))
-  .catch((error) => res.status(500).json({ error }));
+    .then((questions) => res.status(200).json({ questions }))
+    .catch((error) => res.status(500).json({ error }));
 };
 
 const updateQuestion = ( req: Request, res: Response, next: NextFunction ) => {
@@ -53,7 +54,8 @@ const deleteQuestion = ( req: Request, res: Response, next: NextFunction ) => {
   const questionId = req.params.questionId;
 
   return Question.findByIdAndDelete(questionId)
-    .then((author) => (author ? res.status(201).json({ message: 'deleted' }) : res.status(404).json({ message: 'Not found'})))
+    .then((question) => (question ? res.status(201).json({ message: 'deleted' }) : res.status(404)
+    .json({ message: 'Not found'})))
     .catch((error) => res.status(500).json({ error }));
 };
 
