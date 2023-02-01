@@ -5,6 +5,7 @@ import Logging from './library/Logging';
 import { config } from './config/config';
 import questionRoutes from './routes/Question';
 import candidateRoutes from './routes/Candidate';
+import resultRoutes from './routes/Result';
 
 const router = express();
 
@@ -45,6 +46,7 @@ const StartServer = () => {
 
   router.use('/questions', questionRoutes);
   router.use('/candidates', candidateRoutes);
+  router.use('/results', resultRoutes);
 
   /** Error handling */
   router.use((req, res, next) => {
