@@ -12,7 +12,7 @@ export interface IQuestionModel extends IQuestion, Document {};
 const QuestionSchema: Schema = new Schema(
   {
     text: { type: String, required: true },
-    point: { type: String, required: true },
+    point: { type: Number, required: true },
     category: { type: String, required: true },
     answer: { type: String, required: true},
   },
