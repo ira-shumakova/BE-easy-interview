@@ -37,23 +37,6 @@ const readAllResults = ( req: Request, res: Response, next: NextFunction ) => {
     .catch((error) => res.status(500).json({ error }));
 };
 
-const updateResult = ( req: Request, res: Response, next: NextFunction ) => {
-  const resultId = req.params.resultId;
-
-  return Result.findById(resultId)
-    .then((result) => {
-      if (result) {
-        result.set(req.body);
-
-        return result.save()
-          .then((result) => res.status(201).json({ result }))
-          .catch((error) => res.status(500).json({ error }));
-      } else {
-        res.status(404).json({ message: 'Not found'});
-      }
-    })
-    .catch((error) => res.status(500).json({ error }));
-};
 const deleteResult = ( req: Request, res: Response, next: NextFunction ) => {
   const resultId = req.params.resultId;
 
@@ -63,4 +46,4 @@ const deleteResult = ( req: Request, res: Response, next: NextFunction ) => {
     .catch((error) => res.status(500).json({ error }));
 };
 
-export default { createResult, readAllResults, readResult, updateResult, deleteResult };
+export default { createResult, readAllResults, readResult, deleteResult };
