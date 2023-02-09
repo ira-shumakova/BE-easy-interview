@@ -28,7 +28,13 @@ const readQuestion = ( req: Request, res: Response, next: NextFunction ) => {
 };
 
 const readAllQuestions = ( req: Request, res: Response, next: NextFunction ) => {
-  return Question.find()
+  return Question.find().where()
+    .then((questions) => res.status(200).json({ questions }))
+    .catch((error) => res.status(500).json({ error }));
+};
+
+const questionsByCategory = ( req: Request, res: Response, next: NextFunction ) => {
+  return Question.find().where({category: req.params.category})
     .then((questions) => res.status(200).json({ questions }))
     .catch((error) => res.status(500).json({ error }));
 };
@@ -59,4 +65,4 @@ const deleteQuestion = ( req: Request, res: Response, next: NextFunction ) => {
     .catch((error) => res.status(500).json({ error }));
 };
 
-export default { createQuestion, readAllQuestions, readQuestion, updateQuestion, deleteQuestion };
+export default { createQuestion, readAllQuestions, readQuestion, questionsByCategory, updateQuestion, deleteQuestion };

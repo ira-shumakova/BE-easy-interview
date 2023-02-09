@@ -20,13 +20,13 @@ export const ValidateSchema = ( schema: ObjectSchema ) => {
 export const Schemas = {
     question: {
         create: Joi.object<IQuestion>({
-            text: Joi.string().min(5).max(50).required(),
+            text: Joi.string().min(5).max(150).required(),
             point: Joi.number().positive().integer().min(1).max(5).required(),
             category: Joi.string().required(),
             answer: Joi.string().min(5).max(250).required(),
         }),
         update: Joi.object<IQuestion>({
-            text: Joi.string().min(5).max(50).required(),
+            text: Joi.string().min(5).max(150).required(),
             point: Joi.number().positive().integer().min(1).max(5).required(),
             category: Joi.string().required(),
             answer: Joi.string().min(5).max(250).required(),
@@ -36,16 +36,16 @@ export const Schemas = {
         create: Joi.object<ICandidate>({
             username: Joi.string().min(5).max(50).required(),
             position: Joi.string().min(5).max(50).required(),
-            linkedinUrl: Joi.string().max(256).dataUri(),
-            feedback: Joi.string().max(250),
-            avatarUrl: Joi.string().dataUri(),
+            linkedinUrl: Joi.string().max(256).uri().allow('', null),
+            feedback: Joi.string().max(250).allow('', null),
+            avatarUrl: Joi.string().uri().allow('', null),
         }), 
         update: Joi.object<ICandidate>({
             username: Joi.string().min(5).max(50).required(),
             position: Joi.string().min(5).max(50).required(),
-            linkedinUrl: Joi.string().max(256).dataUri(),
-            feedback: Joi.string().max(250),
-            avatarUrl: Joi.string().dataUri(),
+            linkedinUrl: Joi.string().max(256).uri().allow('', null),
+            feedback: Joi.string().max(250).allow('', null),
+            avatarUrl: Joi.string().uri().allow('', null),
         }),
     },
     result: {
