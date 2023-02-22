@@ -6,6 +6,7 @@ export interface IAnswer {
    answerPoints: number;
    category: string;
    answer: string;
+   _id: string;
 };
 
 export interface IResult {

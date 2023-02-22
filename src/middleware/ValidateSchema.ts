@@ -50,7 +50,16 @@ export const Schemas = {
     },
     result: {
         create: Joi.object<IResult>({
-            answerArray: Joi.array().required(),
+            answerArray: Joi.array().items(
+                Joi.object({
+                    text: Joi.string(),
+                    point: Joi.number(),
+                    answerPoints: Joi.number(),
+                    category: Joi.string(),
+                    answer: Joi.string(),
+                    _id: Joi.string(),
+                })
+            ),
             startedAt: Joi.number().required(),
             endedAt: Joi.number().required(),
             title: Joi.string().required(),
