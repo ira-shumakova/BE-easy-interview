@@ -53,4 +53,11 @@ const deleteResult = ( req: Request, res: Response, next: NextFunction ) => {
     .catch((error) => res.status(500).json({ error }));
 };
 
-export default { createResult, readAllResults, readResult, resultsByCandidate, deleteResult };
+const lastResult = ( req: Request, res: Response, next: NextFunction ) => {
+  return Result.findOne().sort({"createdAt": -1})
+    .populate('candidateId')
+    .then((result) => res.status(200).json({ result }))
+    .catch((error) => res.status(500).json({ error }));
+}
+
+export default { createResult, readAllResults, readResult, resultsByCandidate, lastResult, deleteResult };

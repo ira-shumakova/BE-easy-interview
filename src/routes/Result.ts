@@ -7,6 +7,7 @@ const router = express.Router();
 router.post('/create', ValidateSchema(Schemas.result.create), controllers.createResult);
 router.get('/get/:resultId', controllers.readResult);
 router.get('/get', controllers.readAllResults);
+router.get('/findlast', controllers.lastResult);
 router.get('/filter/:candidateId', controllers.resultsByCandidate);
 router.delete('/delete/:resultId', controllers.deleteResult);
 
