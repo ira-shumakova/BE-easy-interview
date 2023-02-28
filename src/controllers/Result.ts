@@ -33,7 +33,7 @@ const readResult = ( req: Request, res: Response, next: NextFunction ) => {
 const readAllResults = ( req: Request, res: Response, next: NextFunction ) => {
   return Result.find()
     .populate('candidateId')
-    .then((result) => res.status(200).json({ result }))
+    .then((results) => res.status(200).json({ results }))
     .catch((error) => res.status(500).json({ error }));
 };
 
