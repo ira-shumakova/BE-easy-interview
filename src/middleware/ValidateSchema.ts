@@ -4,6 +4,7 @@ import Logging from "../library/Logging";
 import { IQuestion } from '../models/Question';
 import { ICandidate } from "../models/Candidate";
 import { IResult } from "../models/Result";
+import { IUser } from "../models/User";
 
 export const ValidateSchema = ( schema: ObjectSchema ) => {
     return async ( req: Request, res: Response, next: NextFunction ) => {
@@ -66,5 +67,12 @@ export const Schemas = {
             resultPoints: Joi.number().required(),
             candidateId: Joi.string().required(),
         }),
+    },
+    users: {
+        create: Joi.object<IUser>({
+            username: Joi.string().min(3).required(),
+            email: Joi.string().email().required(),
+            password: Joi.string().min(6).required()
+        })
     }
 }
