@@ -83,6 +83,10 @@ const login = ( req: Request, res: Response, next: NextFunction ) => {
                             });
                         }
                     });
+                } else if (password != users[0].password) {
+                    return res.status(401).json({
+                        message: "Unauthorized"
+                    })
                 }
             });
         })
